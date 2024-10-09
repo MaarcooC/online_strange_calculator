@@ -1,1 +1,0 @@
-A strange online calculator that gives strange results
