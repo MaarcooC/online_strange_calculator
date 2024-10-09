@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <title>Online strange calculator</title>
+        <link rel="stylesheet" href="styles.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div id="calculator"> 
+        <input id="display" readonly>
+        <div id="clear">
+            <button class="operator" onclick="clearDisplay()">C</button>
+        </div>
+        <div id="keys">
+            <div class="operators">
+                <button class="operator" onclick="show_on_display('/')">/</button>
+                <button class="operator" onclick="show_on_display('*')">*</button>
+                <button class="operator" onclick="show_on_display('-')">-</button>
+                <button class="operator" onclick="show_on_display('+')">+</button>
+            </div>
+            <div class="numbers">
+                <button onclick="show_on_display('7')">7</button>
+                <button onclick="show_on_display('8')">8</button>
+                <button onclick="show_on_display('9')">9</button>
+
+                <button onclick="show_on_display('4')">4</button>
+                <button onclick="show_on_display('5')">5</button>
+                <button onclick="show_on_display('6')">6</button>
+
+                <button onclick="show_on_display('1')">1</button>
+                <button onclick="show_on_display('2')">2</button>
+                <button onclick="show_on_display('3')">3</button>
+
+                <button onclick="show_on_display('0')">0</button>
+                <button onclick="show_on_display('.')">.</button>
+                <button onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
