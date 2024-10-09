@@ -14,7 +14,7 @@ function calculate(){
     const expression = display.value;
 
     try{
-        if(expression == "2*3") {
+        if(expression == "2*3" || expression == "3*2") {
             display.value = "5";
         } else {
             display.value = eval(expression);
