@@ -24,6 +24,8 @@ function calculate(){
             display.value = "420";            
         } else if (expression == "0/0") {
             display.value = "U STUPID";
+        } else if (expression == "9/11"){
+            display.value = "911";  
         } else {
             display.value = eval(expression);
         }
