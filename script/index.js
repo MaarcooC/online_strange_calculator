@@ -87,21 +87,50 @@ function createFloatingResult(result){
     const div = document.createElement("div");
     div.className = "popup-content result-window";
     div.style.position = "fixed";
-    div.style.top = Math.random() * 70 + "%";
-    div.style.left = Math.random() * 70 + "%";
     div.style.zIndex = 2000;
     div.style.background = "#fff";
+    div.style.visibility = "hidden"; // prima invisibile (per misurarlo)
 
     div.innerHTML = `
         <h2>Risultato</h2>
         <p>${result}</p>
         <button onclick="this.parentElement.remove()">OK</button>
     `;
+
     document.body.appendChild(div);
+
+    // --- MISURA POPUP E SCHERMO ---
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    const popupWidth = div.offsetWidth;
+    const popupHeight = div.offsetHeight;
+
+    // limite massimo per top/left per NON uscire dallo schermo
+    const maxLeft = screenWidth - popupWidth;
+    const maxTop = screenHeight - popupHeight;
+
+    // posizione casuale valida
+    const left = Math.random() * maxLeft;
+    const top = Math.random() * maxTop;
+
+    // applica posizione reale
+    div.style.left = `${left}px`;
+    div.style.top = `${top}px`;
+
+    div.style.visibility = "visible"; // ora mostra tutto
 }
+
+let subscriptionPrice = 200;
 
 // abbonamento meme
 function subscribe(){
     closePaymentPopup();
-    alert("Grazie per esserti ABBO-NATO!\n200$ al mese, PER SEMPRE.\nNon puoi più disdire 😈");
+
+    alert(
+        `Grazie per esserti Abbonato!\n${subscriptionPrice}$ al mese.\nPER SEMPRE.\nNon puoi più disdire 😈`
+    );
+
+    subscriptionPrice += 200; // aumenta il prezzo per la prossima volta
+    clearDisplay();
 }
