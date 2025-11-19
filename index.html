@@ -40,6 +40,38 @@
             </div>
         </div>
     </div>
+
+    <!-- POPUP pagamento -->
+    <div id="payment-popup" class="popup hidden">
+        <div class="popup-content">
+            <h2 class="pulse-title">Ottieni il tuo risultato</h2>
+
+            <div class="section">
+                <h3>Pagamento istantaneo</h3>
+                <button class="pay-btn" onclick="payOne()">1 risultato — 200$</button>
+                <button class="pay-btn" onclick="payFive()">5 risultati — 1200$</button>
+            </div>
+
+            <div class="section">
+                <h3>Abbonamento</h3>
+                <button class="subscribe-btn" onclick="subscribe()">
+                    200$ / mese • 1 risultato al mese • PER SEMPRE (senza disdetta)
+                </button>
+            </div>
+
+            <button class="close-popup" onclick="closePaymentPopup()">Chiudi</button>
+        </div>
+    </div>
+
+    <!-- POPUP risultato -->
+    <div id="result-popup" class="popup hidden">
+        <div class="popup-content result-window">
+            <h2>Risultato</h2>
+            <p id="result-text"></p>
+            <button onclick="closeResultPopup()">OK</button>
+        </div>
+    </div>
+
     <script src="script/index.js"></script>
 </body>
 </html>

@@ -75,3 +75,78 @@ button:active {
 .operator {
     background-color: rgb(187, 109, 8);
 }
+
+/* --- POPUP BASE --- */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.hidden {
+    display: none;
+}
+
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 350px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* --- TITOLO PULSANTE --- */
+.pulse-title {
+    animation: pulse 1.2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1);}
+    50% { transform: scale(1.15);}
+    100% { transform: scale(1);}
+}
+
+/* --- PULSANTI --- */
+.pay-btn, .subscribe-btn, .close-popup, #result-popup button {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+}
+
+.pay-btn {
+    background: #ff7b00;
+    color: white;
+}
+
+.subscribe-btn {
+    background: #b300ff;
+    color: white;
+}
+
+.close-popup {
+    background: #444;
+    color: white;
+    margin-top: 20px;
+}
+
+/* RISULTATO */
+.result-window {
+    width: 250px;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.8);}
+    to {opacity: 1; transform: scale(1);}
+}
