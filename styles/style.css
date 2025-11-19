@@ -1,3 +1,4 @@
+/* --- BODY --- */
 body {
     background-color: rgb(201, 201, 201);
     display: flex;
@@ -5,37 +6,34 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-button {
-    font-weight: bold;
-    border-radius: 50px;
-    height: 100px;
-    width: 100px;
-    border: none;
-    background-color: rgb(21, 21, 61);
-    font-size: 3rem;
-    cursor: pointer;
-    color: white;
-}
-
-button:hover {
-    opacity: 75%;
-}
-
-button:active {
-    opacity: 60%;
-}
-
+/* --- CALCOLATRICE --- */
 #calculator {
     background-color: rgb(13, 13, 39);
     max-width: 500px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     border-radius: 20px;
     overflow: hidden;
     padding-bottom: 25px;
 }
 
+/* --- DISPLAY --- */
+#display {
+    text-align: left;
+    width: 100%;
+    color: white;
+    padding: 20px;
+    border: none;
+    font-size: clamp(2rem, 5vw, 5rem);
+    background-color: rgb(21, 21, 61);
+}
+
+/* --- KEYS --- */
 #keys {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -55,16 +53,33 @@ button:active {
     gap: 10px;
 }
 
-#display {
-    text-align: left;
-    width: 100%;
-    color: white;
-    padding: 20px;
+/* --- BUTTONS --- */
+button {
+    font-weight: bold;
+    border-radius: 50px;
+    height: clamp(60px, 10vw, 100px);
+    width: clamp(60px, 10vw, 100px);
     border: none;
-    font-size: 5rem;
     background-color: rgb(21, 21, 61);
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    cursor: pointer;
+    color: white;
+    transition: 0.2s;
 }
 
+button:hover {
+    opacity: 0.75;
+}
+
+button:active {
+    opacity: 0.6;
+}
+
+.operator {
+    background-color: rgb(187, 109, 8);
+}
+
+/* --- CLEAR BUTTON --- */
 #clear {
     display: flex;
     justify-content: left;
@@ -72,6 +87,125 @@ button:active {
     padding-bottom: 0px;
 }
 
-.operator {
-    background-color: rgb(187, 109, 8);
+/* --- POPUP BASE --- */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.hidden {
+    display: none;
+}
+
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* --- TITOLO PULSANTE --- */
+.pulse-title {
+    animation: pulse 1.2s infinite ease-in-out;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1);}
+    50% { transform: scale(1.15);}
+    100% { transform: scale(1);}
+}
+
+/* --- PULSANTI POPUP --- */
+.pay-btn, .subscribe-btn, .close-popup, #result-popup button {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    cursor: pointer;
+    border: none;
+    width: 100%;
+}
+
+.pay-btn {
+    background: #ff7b00;
+    color: white;
+}
+
+.subscribe-btn {
+    background: #b300ff;
+    color: white;
+}
+
+.close-popup {
+    background: #444;
+    color: white;
+    margin-top: 20px;
+}
+
+/* RISULTATO */
+.result-window {
+    width: 90%;
+    max-width: 300px;
+}
+
+/* ANIMAZIONE POPUP */
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.8);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 768px) {
+    
+    #calculator{
+        width: min-content;
+    }
+    
+    #keys {
+        grid-template-columns: repeat(3, 1fr)
+    }
+
+    .numbers {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    button {
+        height: clamp(50px, 12vw, 80px);
+        width: clamp(50px, 12vw, 80px);
+        font-size: clamp(1.2rem, 3vw, 2.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    #calculator {
+        width: min-content;
+    }
+
+    #display {
+        font-size: clamp(2rem, 6vw, 4rem);
+        padding: 15px;
+    }
+
+    button {
+        height: clamp(40px, 12vw, 70px);
+        width: clamp(40px, 12vw, 70px);
+        font-size: clamp(1rem, 4vw, 2rem);
+    }
+
+    .popup-content {
+        width: 95%;
+        padding: 20px;
+    }
 }
